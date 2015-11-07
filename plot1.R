@@ -3,7 +3,7 @@ file_URL <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_pow
 download.file(file_URL, "household_power_consumption.zip")
 unzip("household_power_consumption.zip", exdir = "household_power_consumption")
 
-## my choice is to read the data from just required dates
+# my choice is to read the data from just required dates
 txt <- "household_power_consumption.txt"
 col_names = c("Date", "Time", "Global_active_power", "Global_reactive_power", 
              "Voltage", "Global_intensity", "Sub_metering_1", "Sub_metering_2",
@@ -23,6 +23,7 @@ data_set$datetime <- as.POSIXct(datetime)
 
 hist(data_set$Global_active_power, col = "red", 
      xlab = "Global Active Power (kilowatts)",
-     main = "Global Active Power")
+     main = "Global Active Power",
+     cex.lab = 0.8, cex.axis = 0.8)
 dev.copy(png, width = 480, height = 480, file = "plot1.png")
 dev.off()
