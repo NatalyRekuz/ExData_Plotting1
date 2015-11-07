@@ -14,7 +14,9 @@ dat <- read.table(text = grep("^[1,2]/2/2007", readLines(txt), value = TRUE),
                   sep = ";",
                   na.strings = "?",
                   stringsAsFactors = FALSE)
-
+library(dplyr)
+data_set <- tbl_df(dat)
+glimpse(data_set)
 # convert the Date and Time variables to Date/Time classes
 data_set$Date <- as.Date(data_set$Date, format = "%d/%m/%Y")
 datetime <- paste(data_set$Date, data_set$Time)
