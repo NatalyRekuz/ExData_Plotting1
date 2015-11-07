@@ -20,7 +20,7 @@ glimpse(data_set)
 # convert the Date and Time variables to Date/Time classes
 data_set$Date <- as.Date(data_set$Date, format = "%d/%m/%Y")
 datetime <- paste(data_set$Date, data_set$Time)
-data_set$datetime <- as.POSIXct(datetime)
+data_set <- mutate(data_set, datetime = as.POSIXct(datetime))
 # =========================================================================== #
 
 hist(data_set$Global_active_power, col = "red", 
