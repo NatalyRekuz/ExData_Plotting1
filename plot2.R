@@ -22,7 +22,7 @@ datetime <- paste(data_set$Date, data_set$Time)
 data_set <- mutate(data_set, datetime = as.POSIXct(datetime))
 # =========================================================================== #
 
-plot(data_set$datetime, data_set$Global_active_power, type="l", xlab="", 
-     ylab="Global Active Power (kilowatts)", cex.lab = 0.6, cex.axis = 0.7)
+plot(data_set$datetime, data_set$Global_active_power, type = "l", xlab = "", 
+     ylab = "Global Active Power (kilowatts)", cex.lab = 0.6, cex.axis = 0.7)
 dev.copy(png, width = 480, height = 480, file = "plot2.png")
 dev.off()

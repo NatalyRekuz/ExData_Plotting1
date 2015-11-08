@@ -31,11 +31,11 @@ with(data_set, {
          ylab = "Energy sub metering")
     lines(data_set$datetime, data_set$Sub_metering_2, col = "red")
     lines(data_set$datetime, data_set$Sub_metering_3, col = "blue")
-    legend("topright", col = c("black", "red", "blue"), 
-           lty = 1, bty = "n", , cex = 0.9,
+    legend("topright", col = c("black", "red", "blue"),  
+           lty = 1, bty = "n", cex = 0.9, 
            legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
-    plot(data_set$datetime, data_set$Voltage, type="l", xlab="datetime", 
-         ylab="Voltage")
+    plot(data_set$datetime, data_set$Voltage, type = "l", xlab = "datetime", 
+         ylab = "Voltage")
     plot(data_set$datetime, data_set$Global_reactive_power, type = "l", 
          xlab = "datetime", ylab = "Global_reactive_power")
 })
