@@ -22,9 +22,13 @@ datetime <- paste(data_set$Date, data_set$Time)
 data_set <- mutate(data_set, datetime = as.POSIXct(datetime))
 # =========================================================================== #
 
-hist(data_set$Global_active_power, col = "red", 
-     xlab = "Global Active Power (kilowatts)",
-     main = "Global Active Power",
-     cex.lab = 0.8, cex.axis = 0.8)
-dev.copy(png, width = 480, height = 480, file = "plot1.png")
+png(width = 480, height = 480, file = "plot3.png")
+plot(data_set$datetime, data_set$Sub_metering_1, type="l", xlab="", 
+     ylab="Energy sub metering", cex.lab = 0.9, cex.axis = 0.9)
+with(data_set, {
+    lines(data_set$datetime, data_set$Sub_metering_2, col = "red")
+    lines(data_set$datetime, data_set$Sub_metering_3, col = "blue")
+    legend("topright", col = c("black", "red", "blue"), lty = 1, cex = 0.9,
+           legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+})
 dev.off()

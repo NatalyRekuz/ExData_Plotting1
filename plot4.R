@@ -21,10 +21,23 @@ data_set$Date <- as.Date(data_set$Date, format = "%d/%m/%Y")
 datetime <- paste(data_set$Date, data_set$Time)
 data_set <- mutate(data_set, datetime = as.POSIXct(datetime))
 # =========================================================================== #
-
-hist(data_set$Global_active_power, col = "red", 
-     xlab = "Global Active Power (kilowatts)",
-     main = "Global Active Power",
-     cex.lab = 0.8, cex.axis = 0.8)
-dev.copy(png, width = 480, height = 480, file = "plot1.png")
+old_par <- par()
+png(width = 480, height = 480, file = "plot4.png")
+par(mfcol = c(2, 2), cex = 0.8)
+with(data_set, {
+    plot(data_set$datetime, data_set$Global_active_power, type = "l", xlab = "", 
+         ylab = "Global Active Power")
+    plot(data_set$datetime, data_set$Sub_metering_1, type = "l", xlab = "", 
+         ylab = "Energy sub metering")
+    lines(data_set$datetime, data_set$Sub_metering_2, col = "red")
+    lines(data_set$datetime, data_set$Sub_metering_3, col = "blue")
+    legend("topright", col = c("black", "red", "blue"), 
+           lty = 1, bty = "n", , cex = 0.9,
+           legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+    plot(data_set$datetime, data_set$Voltage, type="l", xlab="datetime", 
+         ylab="Voltage")
+    plot(data_set$datetime, data_set$Global_reactive_power, type = "l", 
+         xlab = "datetime", ylab = "Global_reactive_power")
+})
 dev.off()
+par(old_par)
